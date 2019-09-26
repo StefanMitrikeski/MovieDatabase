@@ -6,12 +6,13 @@ import cors from 'cors';
 import unless from 'express-unless';
 import jwt from 'express-jwt';
 import io from 'socket.io';
+import swaggerUi from 'swagger-ui-express';
 
 import indexRouter from './index/router';
 
 const app = express();
 
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3033;
 
 app.use(logger('dev'));
 app.use(cors());

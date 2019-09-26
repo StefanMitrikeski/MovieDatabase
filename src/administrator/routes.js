@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import actions from './actions';
-
+import jwt from 'jsonwebtoken';
 
 const {
    list, 

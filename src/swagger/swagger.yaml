@@ -1,0 +1,13 @@
+swagger: "2.0"
+info: 
+version: "1.0.0"
+title: MovieDataBase
+host: "localhost 3033"
+basePath: /
+schemes:
+ -http
+consumes:
+ -aplication/json
+produces:
+ -aplication/json
+paths:

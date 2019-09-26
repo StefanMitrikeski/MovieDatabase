@@ -1,0 +1,51 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Simple API
+  description: A simple API to learn how to write OpenAPI Specification
+
+schemes:
+  - https
+host: localhost:3033
+basePath: /
+
+paths:
+  /admin:
+    get:
+      summary: "Gets some persons"
+      description: "a list of admins."
+      responses:
+        200:
+          description: "A list of of person"
+          schema:
+            type: "array"
+            items:
+              required:
+                - "username"
+              properties:
+                username:
+                  type: "string"
+                email:
+                  type: "string"
+                phonenumber:
+                  type: "string"
+
+    post:
+      summary: "Create Admin"
+      description: "new admin."
+      responses:
+        200:
+          description: "A list of admins"
+          schema:
+            type: "array"
+            items:
+              required:
+                - "username"
+              properties:
+                username:
+                  type: "string"
+                email:
+                  type: "string"
+                phonenumber:
+                  type: "string"

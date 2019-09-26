@@ -73,6 +73,13 @@ function validateEmail (email) {
   }
     return false;
 };
+function strongPassword (password) {
+  if (password.includes('!') || password.includes('@') || password.includes('#') || password.includes('$') || password.includes('%') || password.includes('^') || password.includes('&') || password.includes('*') && (password.includes(Number)) && password.length() >= 8 ) {
+    return true;
+  } else {
+    return false;
+  }
+}
   
 function createWithPromise (username, email, phonenumber, passHash, salt, createAt) {
     const createNewAdmin = 'INSERT INTO administrator(username, email, phonenumber, password, salt, created_at) VALUES (?,?,?,?,?,?)';
@@ -108,6 +115,7 @@ const create = async (req, res,next) => {
 
   const createVerification = validatePhoneNumber(phonenumber);
   const createEmailVal = validateEmail(email);
+  const validPassword= strongPassword(password)
   const listAdmins = await listAllAdmins();
 
   if (listAdmins === null) {
@@ -121,7 +129,7 @@ const create = async (req, res,next) => {
     };
   }
 
-  if(createVerification === true && createEmailVal === true){
+  if(createVerification === true && createEmailVal === true && validPassword ===true){
     try {
       const createPromise = await createWithPromise(username, email, phonenumber, passHash, salt, createAt);
       res.status(201).send({success: true, message: "created new Administrator", data: { username, email, phonenumber, passHash } });
@@ -208,7 +216,6 @@ function updateSeriesRating(rating, id){
   });
   });
 };
- 
   
 const updateSeries = async (req,res,next) =>{
     const { id }:{ id: string }=req.params; 

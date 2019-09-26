@@ -1,0 +1,15 @@
+{
+    "dev": {
+      "database": "moviedb",
+      "host": "localhost",
+      "user": "root",
+      "password": "root",
+      "port": 3306
+    },
+    "stagin": {
+  
+    },
+    "productions": {
+  
+    }
+  }
